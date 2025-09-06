@@ -1,26 +1,26 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Moon, Sun, Check } from "lucide-react"
-import { useTheme } from "next-themes"
+import * as React from "react";
+import { Moon, Sun, Check } from "lucide-react";
+import { useTheme } from "next-themes";
 
-import { Button } from "@/shadcn/ui/button"
+import { Button } from "@/components/shadcn/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/shadcn/ui/dropdown-menu"
+} from "@/components/shadcn/ui/dropdown-menu";
 
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/shadcn/ui/tooltip"
+} from "@/components/shadcn/ui/tooltip";
 
 export function ModeToggle() {
-  const { setTheme, theme } = useTheme()
+  const { setTheme, theme } = useTheme();
 
   return (
     <TooltipProvider>
@@ -58,5 +58,5 @@ export function ModeToggle() {
         </DropdownMenuContent>
       </DropdownMenu>
     </TooltipProvider>
-  )
+  );
 }

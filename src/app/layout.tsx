@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/personalization/theme-provider";
+import { ThemeProvider } from "@/components/pages/root/personalization/theme-provider";
 import { Geist, Geist_Mono } from "next/font/google";
 import favicon from "@/assets/favicon.ico";
-import Navbar from "@/components/navbar/navbar";
+import Navbar from "@/components/pages/root/nav/navbar";
 import "@/styles/globals.css";
 
 const geistSans = Geist({
@@ -28,13 +28,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} scrollbar-gutter-stable scroll-smooth`}
       suppressHydrationWarning
     >
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          {children}
+          <main className="pt-16">{children}</main>
         </ThemeProvider>
       </body>
     </html>

@@ -1,10 +1,15 @@
-"use client"
+"use client";
 
-import { Menu } from "lucide-react"
-import { Button } from "@/shadcn/ui/button"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/shadcn/ui/sheet"
-import { NavLink } from "@/components/navbar/navbar-link"
-
+import { Menu } from "lucide-react";
+import { Button } from "@/components/shadcn/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/shadcn/ui/sheet";
+import { NavLink } from "@/components/pages/root/nav/navbar-link";
 
 export function MobileMenu() {
   return (
@@ -26,5 +31,5 @@ export function MobileMenu() {
         </div>
       </SheetContent>
     </Sheet>
-  )
+  );
 }
