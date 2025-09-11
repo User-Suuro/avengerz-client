@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { ModeToggle } from "@/components/pages/root/personalization/mode-toggle";
-import { NavLink } from "@/components/pages/root/nav/navbar-link";
-import { MobileMenu } from "@/components/pages/root/nav/mobile-menu";
+import { ModeToggle } from "../personalization/mode-toggle";
+import { NavLink } from "./navbar-link";
+import { MobileMenu } from "./mobile-menu";
 import favicon from "@/assets/favicon.ico"; // Import from assets
 
 export default function Navbar() {

@@ -1,9 +1,9 @@
+import "@/styles/globals.css";
 import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/pages/root/personalization/theme-provider";
+import Navbar from "@/app/_components/nav/navbar";
 import { Geist, Geist_Mono } from "next/font/google";
 import favicon from "@/assets/favicon.ico";
-import Navbar from "@/components/pages/root/nav/navbar";
-import "@/styles/globals.css";
+import { ThemeProvider } from "./_components/personalization/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} scrollbar-gutter-stable scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable} [scrollbar-gutter:stable] scroll-smooth`}
       suppressHydrationWarning
     >
       <body>

@@ -9,7 +9,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/shadcn/ui/sheet";
-import { NavLink } from "@/components/pages/root/nav/navbar-link";
+import { NavLink } from "./navbar-link";
 
 export function MobileMenu() {
   return (
