@@ -1,9 +1,12 @@
 import "@/styles/globals.css";
-import type { Metadata } from "next";
-import Navbar from "@/app/_components/nav/navbar";
-import { Geist, Geist_Mono } from "next/font/google";
-import favicon from "@/assets/favicon.ico";
+
+import Navbar from "./_components/nav/navbar";
 import { ThemeProvider } from "./_components/personalization/theme-provider";
+
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+
+import favicon from "@/assets/favicon.ico";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +37,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          <main className="pt-16">{children}</main>
+          <main>{children}</main>
         </ThemeProvider>
       </body>
     </html>
