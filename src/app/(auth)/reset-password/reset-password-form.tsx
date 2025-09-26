@@ -12,6 +12,7 @@ import {
   FormMessage,
 } from "@/components/shadcn/ui/form";
 import { passwordSchema } from "@/lib/validation";
+import { authClient } from "@/server/utils/auth-client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -40,7 +41,21 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
   });
 
   async function onSubmit({ newPassword }: ResetPasswordValues) {
-    // TODO: Handle password reset request
+    setSuccess(null);
+    setError(null);
+
+    const { error } = await authClient.resetPassword({
+      newPassword,
+      token,
+    });
+
+    if (error) {
+      setError(error.message || "Something went wrong");
+    } else {
+      setSuccess("Password reset successfully. Redirecting to sign in...");
+      setTimeout(() => router.push("/sign-in"), 3000);
+      form.reset();
+    }
   }
 
   const loading = form.formState.isSubmitting;

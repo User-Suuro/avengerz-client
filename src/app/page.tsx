@@ -1,5 +1,12 @@
+import Navbar from "./_components/nav/navbar";
+
 export default function Home() {
   return (
-    <div className="font-sans items-center justify-items-center">Home Page</div>
+    <div>
+      <Navbar />
+
+      <div className="container items-center pt-16">
+        Home Page</div>
+    </div>
   );
 }

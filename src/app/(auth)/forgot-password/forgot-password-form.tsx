@@ -11,6 +11,7 @@ import {
   FormMessage,
 } from "@/components/shadcn/ui/form";
 import { Input } from "@/components/shadcn/ui/input";
+import { authClient } from "@/server/utils/auth-client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -32,7 +33,20 @@ export function ForgotPasswordForm() {
   });
 
   async function onSubmit({ email }: ForgotPasswordValues) {
-    // TODO: Handle password reset
+    setSuccess(null);
+    setError(null);
+    const { error } = await authClient.requestPasswordReset({
+      email,
+      redirectTo: "/reset-password",
+    });
+
+    if (error) {
+      setError(error.message || "Something went wrong");
+    } else {
+      setSuccess("If that email is registered, a reset link has been sent.");
+    }
+
+    form.reset();
   }
 
   const loading = form.formState.isSubmitting;

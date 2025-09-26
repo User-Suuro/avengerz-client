@@ -14,15 +14,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
 
-export function UserDropdown() {
-  // TODO: Render real user info
-  const user = {
-    name: "John Doe",
-    email: "john.doe@example.com",
-    image: undefined,
-    role: "admin",
-  };
+import { authClient } from "@/server/utils/auth-client";
+import { toast } from "sonner";
+import { User } from "@/server/auth";
 
+interface UserDropdownProps {
+  user: User;
+}
+
+export function UserDropdown({ user }: UserDropdownProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -50,7 +50,7 @@ export function UserDropdown() {
           </Link>
         </DropdownMenuItem>
         {/* TODO: Hide admin item for non-admin users */}
-        <AdminItem />
+        {user.role === "admin" && <AdminItem />}
         <SignOutItem />
       </DropdownMenuContent>
     </DropdownMenu>
@@ -71,7 +71,18 @@ function SignOutItem() {
   const router = useRouter();
 
   async function handleSignOut() {
-    // TODO: Handle sign out
+    toast.loading("Signing out...");
+
+    const { error } = await authClient.signOut();
+
+    toast.dismiss();
+
+    if (error) {
+      toast.error(error.message || "Something went wrong");
+    } else {
+      toast.success("Signed out successfully");
+      router.push("/sign-in");
+    }
   }
 
   return (

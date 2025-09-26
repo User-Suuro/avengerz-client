@@ -9,7 +9,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/shadcn/ui/sheet";
-import { NavLink } from "./navbar-link";
+import Link from "next/link";
 
 export function MobileMenu() {
   return (
@@ -25,9 +25,9 @@ export function MobileMenu() {
           <SheetTitle>Menu</SheetTitle>
         </SheetHeader>
         <div className="flex flex-col space-y-8 p-8">
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="/reviews">Reviews</NavLink>
-          <NavLink href="/appointments">Appointments</NavLink>
+          <Link href="/">Home</Link>
+          <Link href="/reviews">Reviews</Link>
+          <Link href="/appointments">Appointments</Link>
         </div>
       </SheetContent>
     </Sheet>

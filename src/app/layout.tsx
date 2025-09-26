@@ -1,7 +1,6 @@
 import "@/styles/globals.css";
 
-import Navbar from "./_components/nav/navbar";
-import { ThemeProvider } from "./_components/personalization/theme-provider";
+import { ThemeProvider } from "./_components/theme-provider";
 import { Toaster } from "@/components/shadcn/ui/sonner";
 
 import type { Metadata } from "next";
@@ -35,7 +34,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} [scrollbar-gutter:stable] scroll-smooth`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar />
           <main>{children}</main>
           <Toaster />
         </ThemeProvider>
