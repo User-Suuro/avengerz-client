@@ -1,4 +1,4 @@
-import Navbar from "../_components/nav/navbar";
+import Navbar from "../../components/nav/navbar";
 
 export default function MainLayout({
   children,

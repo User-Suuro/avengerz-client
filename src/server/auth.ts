@@ -3,6 +3,8 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { betterAuth } from "better-auth";
 import { account, user, session, verification } from "./db/schema/auth-schema";
 import { sendMail } from "./utils/mailer";
+import { createAuthMiddleware, APIError } from "better-auth/api";
+import { passwordSchema } from "@/lib/validation";
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
@@ -45,6 +47,25 @@ export const auth = betterAuth({
         input: false,
       },
     },
+  },
+
+  hooks: {
+    before: createAuthMiddleware(async (ctx) => {
+      if (
+        ctx.path === "/sign-up/email" ||
+        ctx.path === "/reset-password" ||
+        ctx.path === "/change-password"
+      ) {
+        const password = ctx.body.password || ctx.body.newPassword;
+        const { error } = passwordSchema.safeParse(password);
+
+        if (error) {
+          throw new APIError("BAD_REQUEST", {
+            message: "Password not strong enough",
+          });
+        }
+      }
+    }),
   },
 });
 

@@ -1,16 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import { ModeToggle } from "./mode-toggle";
 import { MobileMenu } from "./mobile-menu";
 import favicon from "@/assets/favicon.ico";
 import { UserDropdown } from "./user-dropdown";
-import { getServerSession } from "@/server/utils/get-session";
 import { ProtectedNavLink } from "./nav-link-protected";
 import { Button } from "@/components/shadcn/ui/button";
 import { UserIcon } from "lucide-react";
+import { authClient } from "@/server/utils/auth-client";
 
-export default async function Navbar() {
-  const session = await getServerSession();
-  const user = session?.user;
+export default function Navbar() {
+  // use client auth hook to get the user
+  const session = authClient.useSession();
+  const user = session.data?.user;
 
   return (
     <header className="fixed w-full border-b bg-background">
@@ -40,11 +43,8 @@ export default async function Navbar() {
             <UserDropdown user={user} />
           ) : (
             // If no user, show login button (or SignInFirstModal)
-            <Link
-              href="/sign-in"
-              className="text-sm font-medium hover:underline"
-            >
-              <Button variant="outline">
+            <Link href="/sign-in" className="text-sm font-medium ">
+              <Button>
                 <UserIcon />
                 <span>Log in</span>
               </Button>

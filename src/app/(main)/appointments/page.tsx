@@ -10,9 +10,7 @@ export default async function Appointments() {
   const session = await getServerSession();
   const user = session?.user;
 
-  if (!user) {
-    unauthorized();
-  }
+  if (!user) unauthorized();
 
   return (
     <div className="font-sans items-center justify-items-center min-h-screen">

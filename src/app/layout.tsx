@@ -1,12 +1,12 @@
 import "@/styles/globals.css";
 
-import { ThemeProvider } from "./_components/theme-provider";
-import { Toaster } from "@/components/shadcn/ui/sonner";
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import favicon from "@/assets/favicon.ico";
+
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/shadcn/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
