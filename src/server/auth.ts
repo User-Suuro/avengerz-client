@@ -17,6 +17,18 @@ export const auth = betterAuth({
     },
   }),
 
+  socialProviders: {
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    },
+
+    github: {
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+    },
+  },
+
   emailAndPassword: {
     enabled: true,
     async sendResetPassword({ user, url }) {
@@ -41,6 +53,16 @@ export const auth = betterAuth({
   },
 
   user: {
+    changeEmail: {
+      enabled: true,
+      async sendChangeEmailVerification({ user, newEmail, url }) {
+        await sendMail({
+          to: user.email,
+          subject: "Approve email change",
+          text: `Your email has been changed to ${newEmail}. Click the link to approve the change: ${url}`,
+        });
+      },
+    },
     additionalFields: {
       role: {
         type: "string",
@@ -51,6 +73,8 @@ export const auth = betterAuth({
 
   hooks: {
     before: createAuthMiddleware(async (ctx) => {
+      // validate password in server sside
+
       if (
         ctx.path === "/sign-up/email" ||
         ctx.path === "/reset-password" ||

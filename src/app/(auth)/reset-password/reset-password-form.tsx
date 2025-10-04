@@ -2,7 +2,7 @@
 
 import { LoadingButton } from "@/components/loading-button";
 import { PasswordInput } from "@/components/password-input";
-import { Card, CardContent } from "@/components/shadcn/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -10,7 +10,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/shadcn/ui/form";
+} from "@/components/ui/form";
 import { passwordSchema } from "@/lib/validation";
 import { authClient } from "@/server/utils/auth-client";
 import { zodResolver } from "@hookform/resolvers/zod";

@@ -1,14 +1,14 @@
 "use client";
 
 import { Menu } from "lucide-react";
-import { Button } from "@/components/shadcn/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/shadcn/ui/sheet";
+} from "@/components/ui/sheet";
 import Link from "next/link";
 
 export function MobileMenu() {

@@ -1,12 +1,12 @@
-import { Badge } from "@/components/shadcn/ui/badge";
-import { Button } from "@/components/shadcn/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/shadcn/ui/card";
+} from "@/components/ui/card";
 import { UserAvatar } from "@/components/user-avatar";
 import { User } from "@/server/auth";
 import { user } from "@/server/db/schema/auth-schema";

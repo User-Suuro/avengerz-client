@@ -4,7 +4,7 @@ import { LogOutIcon, ShieldIcon, UserIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/shadcn/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +12,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/shadcn/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 
 import { authClient } from "@/server/utils/auth-client";
 import { toast } from "sonner";

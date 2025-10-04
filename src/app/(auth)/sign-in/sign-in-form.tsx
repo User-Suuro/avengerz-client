@@ -4,7 +4,7 @@ import { GitHubIcon } from "@/components/icons/GitHubIcon";
 import { GoogleIcon } from "@/components/icons/GoogleIcon";
 import { LoadingButton } from "@/components/loading-button";
 import { PasswordInput } from "@/components/password-input";
-import { Button } from "@/components/shadcn/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -12,8 +12,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/shadcn/ui/card";
-import { Checkbox } from "@/components/shadcn/ui/checkbox";
+} from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -21,8 +21,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/shadcn/ui/form";
-import { Input } from "@/components/shadcn/ui/input";
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { authClient } from "@/server/utils/auth-client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -45,7 +45,9 @@ export function SignInForm() {
   const [error, setError] = useState<string | null>(null);
 
   const router = useRouter();
+
   const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirect");
 
   const form = useForm<SignInValues>({
     resolver: zodResolver(signInSchema),
@@ -76,12 +78,23 @@ export function SignInForm() {
       setError(error.message || "Something went wrong");
     } else {
       toast.success("Signed in successfully!");
-      router.push("/appointments");
+      router.push(redirect ?? "/profile");
     }
   }
 
   async function handleSocialSignIn(provider: "google" | "github") {
-    // TODO: Handle social sign in
+    setError(null);
+    setLoading(true);
+    const { error } = await authClient.signIn.social({
+      provider,
+      callbackURL: redirect ?? "/profile",
+    });
+
+    setLoading(false);
+
+    if (error) {
+      setError(error.message || "Something went wrong");
+    }
   }
 
   return (

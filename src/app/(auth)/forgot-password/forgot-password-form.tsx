@@ -1,7 +1,7 @@
 "use client";
 
 import { LoadingButton } from "@/components/loading-button";
-import { Card, CardContent } from "@/components/shadcn/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -9,8 +9,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/shadcn/ui/form";
-import { Input } from "@/components/shadcn/ui/input";
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { authClient } from "@/server/utils/auth-client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";

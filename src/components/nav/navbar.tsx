@@ -3,12 +3,13 @@
 import Link from "next/link";
 import { ModeToggle } from "./mode-toggle";
 import { MobileMenu } from "./mobile-menu";
-import favicon from "@/assets/favicon.ico";
+import logo from "@/assets/logo/favicon.svg";
 import { UserDropdown } from "./user-dropdown";
 import { ProtectedNavLink } from "./nav-link-protected";
-import { Button } from "@/components/shadcn/ui/button";
+import { Button } from "@/components/ui/button";
 import { UserIcon } from "lucide-react";
 import { authClient } from "@/server/utils/auth-client";
+import Image from "next/image";
 
 export default function Navbar() {
   // use client auth hook to get the user
@@ -16,17 +17,17 @@ export default function Navbar() {
   const user = session.data?.user;
 
   return (
-    <header className="fixed w-full border-b bg-background">
+    <header className="w-full border-b bg-background">
       <div className="mx-4 flex items-center h-16 justify-between px-4">
         {/* Left: Logo */}
         <div className="flex items-center">
           <Link href="/">
-            <img src={favicon.src} alt="Avengerz" className="h-12 w-12" />
+            <Image src={logo} alt="Avengerz" width={48} height={200} />
           </Link>
         </div>
 
         {/* Middle: Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-8 text-sm font-medium transition-colors h-full">
+        <nav className="hidden md:flex items-center space-x-8 text-sm font-medium h-full">
           <Link href="/">Home</Link>
           <ProtectedNavLink href="/reviews" user={user}>
             Reviews

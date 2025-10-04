@@ -9,7 +9,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/shadcn/ui/card";
+} from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -17,8 +17,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/shadcn/ui/form";
-import { Input } from "@/components/shadcn/ui/input";
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { passwordSchema } from "@/lib/validation";
 import { authClient } from "@/server/utils/auth-client";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -74,7 +74,7 @@ export function SignUpForm() {
       setError(error.message || "Something went wrong");
     } else {
       toast.success("Account Successfully Created!");
-      router.push("/appointments");
+      router.push("/profile");
     }
   }
 

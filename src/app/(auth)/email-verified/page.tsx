@@ -1,4 +1,4 @@
-import { Button } from "@/components/shadcn/ui/button";
+import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 import Link from "next/link";
 

@@ -16,7 +16,6 @@ export function ResendVerificationButton({
   const [error, setError] = useState<string | null>(null);
 
   async function resendVerificationEmail() {
-    // TODO: Resend verification email
     setSuccess(null);
     setError(null);
     setIsLoading(true);

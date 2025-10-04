@@ -2,7 +2,7 @@
 
 import { useState, ReactNode } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/shadcn/ui/button";
+import { Button } from "@/components/ui/button";
 import { Modal } from "./modal";
 
 interface SignInFirstModalProps {

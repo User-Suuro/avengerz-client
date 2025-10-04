@@ -1,4 +1,4 @@
-import { Input } from "@/components/shadcn/ui/input";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useState } from "react";

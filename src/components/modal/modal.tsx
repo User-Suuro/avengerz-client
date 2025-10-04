@@ -9,8 +9,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/shadcn/ui/dialog";
-import { Button } from "@/components/shadcn/ui/button";
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 interface ModalProps {
   trigger: ReactNode;
